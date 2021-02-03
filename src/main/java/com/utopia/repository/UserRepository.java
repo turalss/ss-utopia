@@ -13,15 +13,12 @@ import com.utopia.model.User;
 public interface UserRepository extends CrudRepository<User, Integer> {
 
 	@Query(value="SELECT * FROM user WHERE role_id = 1?", nativeQuery=true)
-	List<User> findUserByRoleIdQuery(int id);
+	List<User> findUserByRoleId(int id);
 	
 	@Query(value="SELECT * FROM user WHERE username = 1?", nativeQuery=true)
-	User findUserByUsernameQuery(String username);
+	User findUserByUsername(String username);
 	
 	@Query(value="SELECT * FROM user WHERE email = 1?", nativeQuery=true)
-	User findUserByEmailQuery(String email);
+	User findUserByEmail(String email);
 	
-	
-
-
 }
