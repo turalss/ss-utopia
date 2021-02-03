@@ -40,11 +40,7 @@ public class UserController {
 		UserRole ur = userRoleService.findUserRoleById(1);
 		user.setUserRole(ur);
 		userService.saveUser(user);
-		return new ResponseEntity<String>("done", HttpStatus.OK
+		return new ResponseEntity<String>("done", HttpStatus.OK);
+
 	}
-
 }
-
-	}	
-}
-

@@ -16,21 +16,21 @@ public class Route {
 
 	@Id
 	@Column(name = "id")
-  private Integer id;
-  
+	private Integer id;
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "destination", referencedColumnName = "id")
-  private Airport destination;
-  
-  @ManyToOne(cascade = CascadeType.ALL)
+	private Airport destination;
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "origin", referencedColumnName = "id")
 	private Airport origin;
 
 	public Route(Integer id, Airport destination, Airport origin) {
 		super();
 		this.setId(id);
-    this.setDestination(destination);
-    this.setOrigin(origin);
+		this.setDestination(destination);
+		this.setOrigin(origin);
 	}
 
 	// Id
@@ -49,9 +49,9 @@ public class Route {
 
 	public void setDestination(Airport airport) {
 		this.destination = airport;
-  }
-  
-  	// Origin
+	}
+
+	// Origin
 	public Airport getOrigin() {
 		return origin;
 	}
@@ -62,13 +62,18 @@ public class Route {
 
 	@Override
 	public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null) return false;
-    if (getClass() != obj.getClass()) return false;
-    Route other = (Route) obj;
-    if (id == null) {
-      if (other.getId() != null) return false;
-    } else if (!id.equals(other.getId())) return false;
-    return true;
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Route other = (Route) obj;
+		if (id == null) {
+			if (other.getId() != null)
+				return false;
+		} else if (!id.equals(other.getId()))
+			return false;
+		return true;
 	}
 }
