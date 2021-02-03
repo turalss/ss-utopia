@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.utopia.model.User;
 import com.utopia.model.UserRole;
 import com.utopia.repository.UserRoleRepository;
 
@@ -21,20 +22,10 @@ public class UserRoleService {
 	private UserRoleRepository userRoleRepository;
 
 	public UserRole findUserRoleById(int id) {
-		Optional<UserRole> optionalUserRole = Optional.ofNullable(userRoleRepository.findUserRoleById(id));
-		if(optionalUserRole.isPresent()) {
-			return optionalUserRole.get();
+		Optional<UserRole> userRole = userRoleRepository.findById(id);
+		if(userRole.isPresent()) {
+			return userRole.get();
 		} else return null;
-	};
-	
-	public UserRole findUserRoleByName(String name) {
-		Optional<UserRole> optionalUserRole = Optional.of(userRoleRepository.findUserRoleByName(name));
-		if(optionalUserRole.isPresent()) {
-			return optionalUserRole.get();
-		} else return null;
-	};
-	
-	
-	
+	};	
 
 }
