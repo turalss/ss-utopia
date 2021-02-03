@@ -17,27 +17,34 @@ import com.utopia.service.UserRoleService;
 import com.utopia.service.UserService;
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/api")
 public class UserController {
 
 	@Autowired
 	UserService userService;
 	@Autowired
 	UserRoleService userRoleService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<User>> getAllUsers(){		
+	public ResponseEntity<List<User>> getAllUsers() {
 		List<User> userList = userService.allUsers();
-		if(userList.isEmpty()) {
+
+		if (userList.size() == 0) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-		} else return new ResponseEntity<>(userList, HttpStatus.OK);
+		} else
+			return new ResponseEntity<>(userList, HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/new")
-	public ResponseEntity<String> inserUser(@RequestBody User user) throws NullPointerException{
+	public ResponseEntity<String> inserUser(@RequestBody User user) throws NullPointerException {
 		UserRole ur = userRoleService.findUserRoleById(1);
 		user.setUserRole(ur);
 		userService.saveUser(user);
-		return new ResponseEntity<String>("done", HttpStatus.OK);
+		return new ResponseEntity<String>("done", HttpStatus.OK
+	}
+
+}
+
 	}	
 }
+
