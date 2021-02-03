@@ -16,18 +16,18 @@ public class UserService {
 	UserRepository userRepository;
 	
 	public List<User> findAllUsersByRoleId(UserRole userRole){
-		return userRepository.findUserByRoleIdQuery(userRole.getId());
+		return userRepository.findUserByRoleId(userRole.getId());
 	};
 	
 	public User findUserByUsername(User user) {
-		return userRepository.findUserByUsernameQuery(user.getUsername());
+		return userRepository.findUserByUsername(user.getUsername());
 	};
 	
 	public User findUserByEmailAdress(User user) {
-		return userRepository.findUserByEmailQuery(user.getEmail());
+		return userRepository.findUserByEmail(user.getEmail());
 	};
 	
-	public void addUser(User user) {
+	public void saveUser(User user) {
 		userRepository.save(user);
 	};
 	
