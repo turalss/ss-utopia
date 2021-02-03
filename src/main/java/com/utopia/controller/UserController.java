@@ -29,7 +29,7 @@ public class UserController {
 	public ResponseEntity<List<User>> getAllUsers() {
 		List<User> userList = userService.allUsers();
 
-		if (userList.size() == 0) {
+		if (userList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else
 			return new ResponseEntity<>(userList, HttpStatus.OK);
@@ -41,6 +41,12 @@ public class UserController {
 		user.setUserRole(ur);
 		userService.saveUser(user);
 		return new ResponseEntity<String>("done", HttpStatus.OK);
+<<<<<<< HEAD
 
 	}
 }
+=======
+	}
+
+}
+>>>>>>> b4e98ace6e7751b0b4297742d279574de09adb2b

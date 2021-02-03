@@ -2,28 +2,24 @@ package com.utopia.model;
 
 import java.sql.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "passenger")
 public class Passenger {
 
-	public Passenger() {
-		
-	}
-	
-	public Passenger(int id, String given_name, String family_name, Date dob, String gender, String address) {
+	public Passenger() {}
+	public Passenger(int id, Integer bookingId, String firstName, String lastName, Date dateOfBirth, String sex, String address) {
 		super();
 		this.id = id;
-		this.given_name = given_name;
-		this.family_name = family_name;
-		this.dob = dob;
-		this.gender = gender;
+		this.bookingId = bookingId; 
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
+		this.sex = sex;
 		this.address = address;
 	}
 
@@ -31,23 +27,22 @@ public class Passenger {
 	@Column(name = "id")
 	private int id;
 	
-	/*@OneToMany(cascade = CascadeType.ALL)
 	@Column(name = "booking_id")
-	private Booking booking;*/
+	private Integer bookingId;
 	
-	@Column
-	private String given_name;
+	@Column(name = "name_first")
+	private String firstName;
 	
-	@Column
-	private String family_name;
+	@Column(name = "name_last")
+	private String lastName;
 	
-	@Column
-	private Date dob;
+	@Column(name = "date_of_birth")
+	private Date dateOfBirth;
 	
-	@Column
-	private String gender;
+	@Column(name = "sex")
+	private String sex;
 	
-	@Column
+	@Column(name = "address")
 	private String address;
 
 	public int getId() {
@@ -58,44 +53,44 @@ public class Passenger {
 		this.id = id;
 	}
 
-	/*public Booking getBooking() {
-		return booking;
+	public Integer getBooking() {
+		return bookingId;
 	}
 
-	public void setBooking(Booking booking) {
-		this.booking = booking;
-	} */
-
-	public String getGiven_name() {
-		return given_name;
+	public void setBooking(Integer bookingId) {
+		this.bookingId = bookingId;
 	}
 
-	public void setGiven_name(String given_name) {
-		this.given_name = given_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public String getFamily_name() {
-		return family_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public void setFamily_name(String family_name) {
-		this.family_name = family_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public Date getDob() {
-		return dob;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public void setDob(Date dob) {
-		this.dob = dob;
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
 
-	public String getGender() {
-		return gender;
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 	public String getAddress() {
@@ -105,7 +100,4 @@ public class Passenger {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	
-	
 }

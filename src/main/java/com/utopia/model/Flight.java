@@ -14,15 +14,12 @@ import javax.persistence.Table;
 @Table(name = "flight")
 public class Flight {
 	
-	public Flight() {
-		
-	}
-		
-	public Flight(Integer id, Airplane airPlane, Timestamp departureTime, Integer reservedSeats, Float seatPrice) {
+	public Flight() {}
+	public Flight(Integer id, Airplane airplane, Route route, Timestamp departureTime, Integer reservedSeats, Float seatPrice) {
 		super();
 		this.id = id;
-		this.airPlane = airPlane;
-		//this.routeId = routeId;
+		this.airplane = airplane;
+		this.route = route;
 		this.departureTime = departureTime;
 		this.reservedSeats = reservedSeats;
 		this.seatPrice = seatPrice;
@@ -34,11 +31,11 @@ public class Flight {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "airplane_id")
-	private Airplane airPlane;
+	private Airplane airplane;
 	
-	/*@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "route_id")
-	private Route routeId;*/
+	private Route route;
 	
 	@Column
 	private Timestamp departureTime;
@@ -58,20 +55,20 @@ public class Flight {
 	}
 
 	public Airplane getAirPlane() {
-		return airPlane;
+		return airplane;
 	}
 
-	public void setAirPlane(Airplane airPlane) {
-		this.airPlane = airPlane;
+	public void setAirPlane(Airplane airplane) {
+		this.airplane = airplane;
 	}
 
-	/*public int getRoute() {
-		return routeId;
+	public Route getRoute() {
+		return route;
 	}
 
-	public void setRoute(int routeId) {
-		this.routeId = routeId;
-	}*/
+	public void setRoute(Route route) {
+		this.route = route;
+	}
 
 	public Timestamp getDepartureTime() {
 		return departureTime;

@@ -31,10 +31,7 @@ public class User {
 	@Column(name = "phone")
 	private String phone;
 	
-	public User() {
-		
-	}
-
+	public User() {}
 	public User(int id, UserRole userRole, String givenName, String familyName, String username, String email,
 			String password, String phone) {
 		super();

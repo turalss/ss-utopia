@@ -8,8 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.utopia.model.airport;
-
 @Entity
 @Table(name = "route")
 public class Route {
@@ -26,6 +24,7 @@ public class Route {
 	@JoinColumn(name = "origin", referencedColumnName = "id")
 	private Airport origin;
 
+  public Route() {}
 	public Route(Integer id, Airport destination, Airport origin) {
 		super();
 		this.setId(id);
