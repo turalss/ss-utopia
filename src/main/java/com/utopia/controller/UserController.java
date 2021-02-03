@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.utopia.model.User;
@@ -29,7 +28,7 @@ public class UserController {
 	@GetMapping
 	public ResponseEntity<List<User>> getAllUsers(){		
 		List<User> userList = userService.allUsers();
-		if(userList.size() == 0) {
+		if(userList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else return new ResponseEntity<>(userList, HttpStatus.OK);
 	}
@@ -40,8 +39,5 @@ public class UserController {
 		user.setUserRole(ur);
 		userService.saveUser(user);
 		return new ResponseEntity<String>("done", HttpStatus.OK);
-	}
-	
-	
-	
+	}	
 }

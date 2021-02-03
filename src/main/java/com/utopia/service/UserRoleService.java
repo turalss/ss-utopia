@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.utopia.model.User;
 import com.utopia.model.UserRole;
 import com.utopia.repository.UserRoleRepository;
 
@@ -26,6 +25,6 @@ public class UserRoleService {
 		if(userRole.isPresent()) {
 			return userRole.get();
 		} else return null;
-	};	
+	}
 
 }
