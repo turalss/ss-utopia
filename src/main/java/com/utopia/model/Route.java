@@ -8,28 +8,32 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.utopia.model.airport;
+
 @Entity
-@Table(name = "airplane")
-public class Airplane {
+@Table(name = "route")
+public class Route {
 
 	@Id
 	@Column(name = "id")
-	private Integer id;
+  private Integer id;
+  
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "airplane_type", referencedColumnName = "id")
-	private AirplaneType airplaneType;
+	@JoinColumn(name = "destination", referencedColumnName = "id")
+  private Airport destination;
+  
+  @ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "origin", referencedColumnName = "id")
+	private Airport origin;
 
-	// @OneToMany
-	// @JoinColumn(name = "flight", referencedColumnName = "id")
-	// private Flight flight;
-
-	public Airplane(Integer id, AirplaneType airplaneType) {
+	public Route(Integer id, Airport destination, Airport origin) {
 		super();
 		this.setId(id);
-		this.setAirplaneType(airplaneType);
+    this.setDestination(destination);
+    this.setOrigin(origin);
 	}
 
-	//id
+	// Id
 	public Integer getId() {
 		return id;
 	}
@@ -38,13 +42,22 @@ public class Airplane {
 		this.id = id;
 	}
 
-	//airplaneType
-	public AirplaneType getAirplaneType() {
-		return airplaneType;
+	// Destination
+	public Airport getDestination() {
+		return destination;
 	}
 
-	public void setAirplaneType(AirplaneType airplaneType) {
-		this.airplaneType = airplaneType;
+	public void setDestination(Airport airport) {
+		this.destination = airport;
+  }
+  
+  	// Origin
+	public Airport getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(Airport airport) {
+		this.origin = airport;
 	}
 
 	@Override
@@ -52,7 +65,7 @@ public class Airplane {
     if (this == obj) return true;
     if (obj == null) return false;
     if (getClass() != obj.getClass()) return false;
-    Airplane other = (Airplane) obj;
+    Route other = (Route) obj;
     if (id == null) {
       if (other.getId() != null) return false;
     } else if (!id.equals(other.getId())) return false;
