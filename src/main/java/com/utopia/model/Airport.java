@@ -9,17 +9,41 @@ import javax.persistence.Table;
 @Table(name = "airport")
 public class Airport {
 	@Id
-	@Column(name = "iata_id")
+	@Column(name = "id")
+	private Integer id;
+
+	@Column(name = "code")
 	private String aiportCode;
-	@Column(name = "city")
-	private String city;
+
+	@Column(name = "name")
+	private String aiportName;
+
+	@Column(name = "cityCode")
+	private String cityCode;
+
+	@Column(name = "cityName")
+	private String cityName;
+
+	@Column(name = "countryCode")
+	private String countryCode;
+
+	@Column(name = "countryName")
+	private String countryName;
+
+	@Column(name = "timezone")
+	private Integer timezone;
+
+	@Column(name = "lat")
+	private Float lat;
+
+	@Column(name = "lng")
+	private Float lng;
 	
 	public Airport() {}
-
-	public Airport(String aiportCode, String city) {
+	public Airport(String aiportCode, String cityCode) {
 		super();
 		this.aiportCode = aiportCode;
-		this.city = city;
+		this.cityCode = cityCode;
 	}
 
 	public String getAiportCode() {
@@ -31,13 +55,10 @@ public class Airport {
 	}
 
 	public String getCity() {
-		return city;
+		return cityCode;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
-	};
-	
-	
-	
+	public void setCity(String cityCode) {
+		this.cityCode = cityCode;
+	}
 }

@@ -15,21 +15,19 @@ public class Airplane {
 	@Id
 	@Column(name = "id")
 	private Integer id;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "airplane_type", referencedColumnName = "id")
 	private AirplaneType airplaneType;
 
-	// @OneToMany
-	// @JoinColumn(name = "flight", referencedColumnName = "id")
-	// private Flight flight;
-
+	public Airplane(){}
 	public Airplane(Integer id, AirplaneType airplaneType) {
 		super();
 		this.setId(id);
 		this.setAirplaneType(airplaneType);
 	}
 
-	//id
+	// id
 	public Integer getId() {
 		return id;
 	}
@@ -38,7 +36,7 @@ public class Airplane {
 		this.id = id;
 	}
 
-	//airplaneType
+	// airplaneType
 	public AirplaneType getAirplaneType() {
 		return airplaneType;
 	}

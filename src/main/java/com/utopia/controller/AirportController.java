@@ -26,10 +26,10 @@ public class AirportController {
 	AirportService airportService;
 	
 	
-	@GetMapping
+	@GetMapping("/all")
 	public ResponseEntity<List<Airport>> getAll() {
 		List<Airport> list = airportService.getAllAirports();
-		if (list.size() == 0) {
+		if (list.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else
 			return new ResponseEntity<>(list, HttpStatus.OK);

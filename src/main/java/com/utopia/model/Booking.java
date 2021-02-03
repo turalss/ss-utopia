@@ -1,11 +1,9 @@
 package com.utopia.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,10 +17,10 @@ public class Booking {
   @Column(name = "staus")
   private String status;
   
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "booking_payment", referencedColumnName = "booking_id")
+	@JoinColumn(name = "confirmation_code")
   private String confirmationCode;
 
+  public Booking() {}
 	public Booking(Integer id, String confirmationCode, String status) {
 		super();
     this.setId(id);

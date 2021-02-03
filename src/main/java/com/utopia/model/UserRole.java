@@ -14,10 +14,7 @@ public class UserRole {
 	@Column(name = "name")
 	private String name;
 	
-	public UserRole() {
-		// TODO Auto-generated constructor stub
-	}
-
+	public UserRole() {}
 	public UserRole(int id, String name) {
 		super();
 		this.id = id;
@@ -39,8 +36,4 @@ public class UserRole {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-	
-
 }

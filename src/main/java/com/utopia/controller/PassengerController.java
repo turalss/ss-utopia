@@ -22,7 +22,7 @@ public class PassengerController {
 	@GetMapping("/all")
 	public ResponseEntity<List<Passenger>> getAllPassengers(){
 		List<Passenger> passengerList = passengerService.getAllPassengers();
-		if(passengerList.size() == 0) {
+		if(passengerList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else return new ResponseEntity<>(passengerList, HttpStatus.OK);
 	}	

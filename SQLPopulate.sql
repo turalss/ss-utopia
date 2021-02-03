@@ -1,21 +1,36 @@
-USE utopia;
+Use Utopia;
 
--- airplane Types
-INSERT INTO airplane_type (max_capacity) VALUES (300);
-INSERT INTO airplane_type (max_capacity) VALUES (800);
-INSERT INTO airplane_type (max_capacity) VALUES (400);
-INSERT INTO airplane_type (max_capacity) VALUES (200);
-INSERT INTO airplane_type (max_capacity) VALUES (100);
+DROP TABLE IF EXISTS airplane_type;
+CREATE TABLE IF NOT EXISTS airplane_type (
+    `id` INT NOT NULL UNIQUE,
+    `max_capacity` INT,
+    PRIMARY KEY (id)
+);
+INSERT INTO airplane_type VALUES
+    (1, 150),
+    (2, 200),
+    (3, 300),
+    (4, 400),
+    (5, 500),
+    (6, 600),
+    (7, 700),
+    (8, 800);
 
 -- airplane
-INSERT INTO airplane (type_id) VALUES (1);
-INSERT INTO airplane (type_id) VALUES (2);
-INSERT INTO airplane (type_id) VALUES (3);
-INSERT INTO airplane (type_id) VALUES (4);
-INSERT INTO airplane (type_id) VALUES (5);
+DROP TABLE IF EXISTS airplane;
+CREATE TABLE IF NOT EXISTS airplane (
+    `id` INT NOT NULL UNIQUE AUTO_INCREMENT,
+    `type_id` INT,
+    PRIMARY KEY (id)
+);
+INSERT INTO airplane VALUES (1,7);
+INSERT INTO airplane VALUES (2,3);
+INSERT INTO airplane VALUES (3,4);
+INSERT INTO airplane VALUES (4,8);
+INSERT INTO airplane VALUES (5,2);
 
 -- airport
-DROP TABLE IF EXISTS airport;
+DROP TABLE IF EXISTS airports;
 CREATE TABLE IF NOT EXISTS airports (
     `id` INT NOT NULL UNIQUE,
     `code` VARCHAR(10) CHARACTER SET utf8,
@@ -30,7 +45,6 @@ CREATE TABLE IF NOT EXISTS airports (
     PRIMARY KEY (id)
 );
 
--- First Section
 INSERT INTO airports VALUES
     (1118,'ABE','Lehigh Valley International Airport','ABE','Allentown','UNITED STATES','US',-5,40.6521,-75.4408),
     (1120,'ABL','Ambler Airport','ABL','Ambler','UNITED STATES','US',-9,67.1064,-157.857),
@@ -512,18 +526,36 @@ INSERT INTO airports VALUES
 
 
  -- route
-INSERT INTO route (origin_id, destination_id) VALUES ('MIA','JFK');
-INSERT INTO route (origin_id, destination_id) VALUES ('MIA','LAX');
-INSERT INTO route (origin_id, destination_id) VALUES ('JFK','LAX');
-INSERT INTO route (origin_id, destination_id) VALUES ('ORD','SJU');
-INSERT INTO route (origin_id, destination_id) VALUES ('JFK','DCA');
-INSERT INTO route (origin_id, destination_id) VALUES ('MIA','DCA');
-INSERT INTO route (origin_id, destination_id) VALUES ('DCA','ORD');
-INSERT INTO route (origin_id, destination_id) VALUES ('SAN','LAX');
-INSERT INTO route (origin_id, destination_id) VALUES ('SFO','DCA');
-INSERT INTO route (origin_id, destination_id) VALUES ('JFK','SJU');
+ DROP TABLE IF EXISTS route;
+ CREATE TABLE IF NOT EXISTS route(
+    `id` INT NOT NULL UNIQUE,
+    `origin_id` VARCHAR(5) CHARACTER SET utf8,
+    `destination_id` VARCHAR(5) CHARACTER SET utf8,
+    PRIMARY KEY (id)
+);
+INSERT INTO route VALUES
+	(1, 'MIA','JFK'),
+    (2, 'MIA','LAX'),
+    (3, 'JFK','LAX'),
+    (4, 'ORD','SJU'),
+    (5, 'JFK','DCA'),
+    (6, 'MIA','DCA'),
+    (7, 'DCA','ORD'),
+    (8, 'SAN','LAX'),
+    (9, 'SFO','DCA'),
+    (10, 'JFK','SJU');
 
 -- flight
+DROP TABLE IF EXISTS flight;
+CREATE TABLE IF NOT EXISTS flight (
+    `id` INT NOT NULL UNIQUE,
+    `route_id` INT,
+    `airplane_id`INT,
+    `departure_time` DATETIME,
+    `reserved_seats`INT,
+    `seat_price`FLOAT,
+    PRIMARY KEY (id)
+);
 INSERT INTO flight (id, route_id, airplane_id, departure_time, reserved_seats, seat_price) VALUES (1, 1 , 1, CAST(N'2021-02-08 10:30:00.000' AS DateTime), 1, 305.00);
 INSERT INTO flight (id, route_id, airplane_id, departure_time, reserved_seats, seat_price) VALUES (2, 1 , 1, CAST(N'2021-02-08 10:30:00.000' AS DateTime), 1, 305.00);
 INSERT INTO flight (id, route_id, airplane_id, departure_time, reserved_seats, seat_price) VALUES (3, 1 , 1, CAST(N'2021-02-08 10:30:00.000' AS DateTime), 1, 305.00);
@@ -577,84 +609,76 @@ INSERT INTO booking VALUES
     (17,'iCgRUaWysKcOvBWM9eF7u816vhQXVjiITbWAGySYetJKaFGjkaMkysJq0aG9RrRht1aGaWDGdOYqdh73JdRjZbmoz5qgDN5VqdQb','ACTIVE'),
     (18,'EmdXDBc52hmE6kFY1oe0suMuVBS7K095XAqB8wRvfIzN9N5IfRUFGPV6nzHdfVFqh5bY05zNDiEySujruTklpKRCgRIv8RdLa2ln','ACTIVE');
 
--- flight_booking
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (1,1);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (2,2);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (3,3);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (4,4);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (5,5);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (6,6);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (7,7);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (8,8);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (9,9);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (10,10);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (11,11);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (12,12);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (13,13);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (14,14);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (15,15);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (16,16);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (17,17);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (18,18);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (19,19);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (20,20);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (21,21);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (22,22);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (23,23);
-INSERT INTO flight_bookings (flight_id, booking_id) VALUES (24,24);
+-- flight_bookings
+DROP TABLE IF EXISTS flight_bookings;
+CREATE TABLE IF NOT EXISTS flight_bookings (
+    `id` INT NOT NULL UNIQUE,
+    `booking_id` INT,
+    PRIMARY KEY (id)
+);
+INSERT INTO flight_bookings VALUES
+	(1,1),
+    (2,2),
+	(3,3),
+    (4,4),
+    (5,5),
+    (6,6),
+    (7,7),
+    (8,8),
+	(9,9),
+    (10,10),
+	(11,11),
+    (12,12),
+    (13,13),
+    (14,15),
+    (15,15),
+    (16,16);
 
 -- passanger
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (1,'Tural', 'Hasanli', '1990-11-23','male', '400 W 50TH Street, NY, NY10019');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (2,'Theresita', 'Dowsey', '1990-11-23','male', '6 Old Shore Avenue');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (3,'Loralyn', 'Heersema', '1990-11-23','male', '910 Pierstorff Drive');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (4,'Shandeigh', 'Trytsman', '1990-11-23','male', '2075 Karstens Trail');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (5,'Bo', 'Morforth', '1990-11-23','male', '16921 5th Avenue');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (6,'Nanny', 'Meekings', '1990-11-23','male', '85 Claremont Drive');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (7,'Frank', 'Flecknell', '1990-11-23','male', '7275 Shoshone Drive');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (8,'Donnamarie', 'Coleiro', '1990-11-23','male', '75015 Hauk Avenue');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (9,'Husain', 'Bremley', '1990-11-23','male', '9362 Anniversary Trail');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (10,'Drucie', 'Pavlenko', '1990-11-23','male', '400 W 50TH Street, NY, NY10019');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (11,'Ethelyn', 'Rudall', '1990-11-23','male', '3 Oriole Place');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (12,'Catarina', 'Sneezum', '1990-11-23','male', '84558 Novick Center');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (13,'Johannes', 'Tunnicliffe', '1990-11-23','male', '04 Homewood Court9');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (14,'Steven', 'Samarth', '1990-11-23','male', '3134 Algoma Trail');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (15,'Westbrooke', 'Terrelly', '1990-11-23','male', '0223 Pine View Center');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (16,'Lari', 'Itzkowicz', '1990-11-23','male', '397 Del Sol Place');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (17,'Becca', 'Skepper', '1990-11-23','male', '05689 Lindbergh Road');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (18,'Ibbie', 'Otham', '1990-11-23','male', '75 Ronald Regan Alley');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (19,'Daisie', 'Cowdroy', '1990-11-23','male', '8 Vahlen Place');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (20,'Zach', 'Dongall', '1990-11-23','male', '931 Kingsford Way');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (21,'Arlena', 'Guiet', '1990-11-23','male', '68 Lakeland Circle');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (22,'Marlo', 'Bloxland', '1990-11-23','male', '822 Nobel Crossing');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (23,'Peggy', 'Dowthwaite', '1990-11-23','male', '400 Mandrake Avenue');
-INSERT INTO passenger (booking_id, given_name, family_name, dob, gender, address) 
-VALUES (24,'Gracia', 'Grinikhinov', '1990-11-23','male', '559 3rd Park');
+DROP TABLE IF EXISTS passenger;
+CREATE TABLE IF NOT EXISTS passenger (
+    `id` INT NOT NULL UNIQUE,
+    `booking_id` INT,
+    `name_first` VARCHAR(255) CHARACTER SET utf8,
+    `name_last` VARCHAR(255) CHARACTER SET utf8,
+    `date_of_birth` DATE,
+    `sex` VARCHAR(7) CHARACTER SET utf8,
+    `address` VARCHAR(255) CHARACTER SET utf8,
+    PRIMARY KEY (id)
+);
+INSERT INTO passenger VALUES
+(1, 1, 'Tural', 'Hasanli', '1990-11-23','male', '400 W 50TH Street, NY, NY10019'),
+(2, 2, 'Theresita', 'Dowsey', '1990-11-23','male', '6 Old Shore Avenue'),
+(3, 3, 'Loralyn', 'Heersema', '1990-11-23','male', '910 Pierstorff Drive'),
+(4, 4, 'Shandeigh', 'Trytsman', '1990-11-23','male', '2075 Karstens Trail'),
+(5, 5, 'Bo', 'Morforth', '1990-11-23','male', '16921 5th Avenue'),
+(6, 6, 'Nanny', 'Meekings', '1990-11-23','male', '85 Claremont Drive'),
+(7, 7, 'Frank', 'Flecknell', '1990-11-23','male', '7275 Shoshone Drive'),
+(8, 8, 'Donnamarie', 'Coleiro', '1990-11-23','male', '75015 Hauk Avenue'),
+(9, 9, 'Husain', 'Bremley', '1990-11-23','male', '9362 Anniversary Trail'),
+(10, 10, 'Drucie', 'Pavlenko', '1990-11-23','male', '400 W 50TH Street, NY, NY10019'),
+(11, 11, 'Ethelyn', 'Rudall', '1990-11-23','male', '3 Oriole Place'),
+(12, 12, 'Catarina', 'Sneezum', '1990-11-23','male', '84558 Novick Center'),
+(13, 13, 'Johannes', 'Tunnicliffe', '1990-11-23','male', '04 Homewood Court9'),
+(14, 14, 'Steven', 'Samarth', '1990-11-23','male', '3134 Algoma Trail'),
+(15, 15, 'Westbrooke', 'Terrelly', '1990-11-23','male', '0223 Pine View Center'),
+(16, 16, 'Lari', 'Itzkowicz', '1990-11-23','male', '397 Del Sol Place'),
+(17, 17, 'Becca', 'Skepper', '1990-11-23','male', '05689 Lindbergh Road'),
+(18, 18, 'Ibbie', 'Otham', '1990-11-23','male', '75 Ronald Regan Alley'),
+(19, 19, 'Daisie', 'Cowdroy', '1990-11-23','male', '8 Vahlen Place'),
+(20, 20, 'Zach', 'Dongall', '1990-11-23','male', '931 Kingsford Way'),
+(21, 21, 'Arlena', 'Guiet', '1990-11-23','male', '68 Lakeland Circle'),
+(22, 22, 'Marlo', 'Bloxland', '1990-11-23','male', '822 Nobel Crossing'),
+(23, 23, 'Peggy', 'Dowthwaite', '1990-11-23','male', '400 Mandrake Avenue'),
+(24, 24, 'Gracia', 'Grinikhinov', '1990-11-23','male', '559 3rd Park');
 
 -- booking payment
-
+DROP TABLE IF EXISTS booking_payment;
+CREATE TABLE IF NOT EXISTS booking_payment (
+    `booking_id` INT NOT NULL,
+    `stripe_id` VARCHAR(255) CHARACTER SET utf8,
+    `refunded` TINYINT
+);
 INSERT INTO booking_payment (booking_id, stripe_id, refunded) VALUES (1, 'AA9901', 0);
 INSERT INTO booking_payment (booking_id, stripe_id, refunded) VALUES (2, 'AA9902', 0);
 INSERT INTO booking_payment (booking_id, stripe_id, refunded) VALUES (3, 'AA9903', 0);
@@ -681,21 +705,44 @@ INSERT INTO booking_payment (booking_id, stripe_id, refunded) VALUES (23, 'AA992
 INSERT INTO booking_payment (booking_id, stripe_id, refunded) VALUES (24, 'AA9924', 0);
 
 -- user_role
-INSERT INTO user_role (name) VALUES ('user');
-INSERT INTO user_role (name) VALUES ('agent');
-INSERT INTO user_role (name) VALUES ('counter');
+DROP TABLE IF EXISTS user_role;
+CREATE TABLE IF NOT EXISTS user_role (
+    `id` INT NOT NULL UNIQUE AUTO_INCREMENT,
+    `name` VARCHAR(255) CHARACTER SET utf8,
+    PRIMARY KEY (id)
+);
+INSERT INTO user_role VALUES 
+	(1, 'guest'),
+    (2, 'customer'),
+    (3, 'agent'),
+    (4, 'employee'),
+    (5, 'admin');
 
 -- user
-INSERT INTO user (role_id, given_name, family_name, username, email, password, phone) 
-VALUES (1, 'Tural', 'Hasanli', 'thasnali', 'tural.hasanli90@gmail.com', '12345678', '6465579796');
-INSERT INTO user (role_id, given_name, family_name, username, email, password, phone) 
-VALUES (2, 'Travel', 'LLC', 'travelllc', 'travel@llc.rm', '12345678', '7547151714');
-INSERT INTO user (role_id, given_name, family_name, username, email, password, phone) 
-VALUES (1, 'Tyler', 'Joshua', 'tj', 'tj@gmail.com', '1277345678', '647765579796');
-INSERT INTO user (role_id, given_name, family_name, username, email, password, phone) 
-VALUES (3, 'Chirtian', 'Reyes', 'tfdj', 'tfdj@gmail.com', '12773454545678', '6477465579796');
+DROP TABLE IF EXISTS user;
+CREATE TABLE IF NOT EXISTS user (
+    `id` INT NOT NULL UNIQUE,
+	`role_id` INT,
+    `name_first` VARCHAR(255) CHARACTER SET utf8,
+    `name_last` VARCHAR(255) CHARACTER SET utf8,
+    `email` VARCHAR(255) CHARACTER SET utf8,
+    `password` VARCHAR(255) CHARACTER SET utf8,
+    `phone` VARCHAR(25) CHARACTER SET utf8,
+    PRIMARY KEY (id)
+);
+INSERT INTO user VALUES
+	(1, 1, "Joe", "Smith", "johnsmith@gmail.com", "1111111", "5555555555"),
+    (2, 4, 'Tural', 'Hasanli', 'tural.hasanli90@gmail.com', '12345678', '6465579796'),
+    (3, 2, 'Travel', 'LLC', 'travel@llc.rm', '12345678', '7547151714'),
+    (4, 3, 'Tyler', 'Joshua', 'tj@gmail.com', '1277345678', '647765579796'),
+    (5, 1, 'Chirtian', 'Reyes', 'tfdj@gmail.com', '12773454545678', '6477465579796');
 
 -- booking_agent
+DROP TABLE IF EXISTS booking_agent;
+CREATE TABLE IF NOT EXISTS booking_agent (
+    `booking_id` INT,
+	`agent_id` INT
+);
 INSERT INTO booking_agent (booking_id, agent_id) VALUES (1, 2);
 INSERT INTO booking_agent (booking_id, agent_id) VALUES (2, 2);
 INSERT INTO booking_agent (booking_id, agent_id) VALUES (3, 2);
@@ -705,6 +752,11 @@ INSERT INTO booking_agent (booking_id, agent_id) VALUES (6, 2);
 INSERT INTO booking_agent (booking_id, agent_id) VALUES (7, 2);
 
 -- booking_user
+DROP TABLE IF EXISTS booking_user;
+CREATE TABLE IF NOT EXISTS booking_user (
+    `booking_id` INT,
+	`user_id` INT
+);
 INSERT INTO booking_user (booking_id, user_id) VALUES (13, 1);
 INSERT INTO booking_user (booking_id, user_id) VALUES (14, 1);
 INSERT INTO booking_user (booking_id, user_id) VALUES (15, 1);
@@ -714,13 +766,20 @@ INSERT INTO booking_user (booking_id, user_id) VALUES (22, 1);
 INSERT INTO booking_user (booking_id, user_id) VALUES (23, 1);
 INSERT INTO booking_user (booking_id, user_id) VALUES (24, 1);
 
--- booking_guest 
-INSERT INTO booking_guest (booking_id, contact_email, contact_phone) VALUES (8, 'jlsdj@gmail.com', '6194457645');
-INSERT INTO booking_guest (booking_id, contact_email, contact_phone) VALUES (9, 'jdslka@gmai.com', '6194412645');
-INSERT INTO booking_guest (booking_id, contact_email, contact_phone) VALUES (10, 'dsdfds@gmail.com', '6194717645');
-INSERT INTO booking_guest (booking_id, contact_email, contact_phone) VALUES (11, 'fjsdlkf@gmail.com', '6132457645');
-INSERT INTO booking_guest (booking_id, contact_email, contact_phone) VALUES (12, 'tryry@gmail.com', '6197657645');
-INSERT INTO booking_guest (booking_id, contact_email, contact_phone) VALUES (18, 'flksdjfkl@gmail.com', '6894457645');
-INSERT INTO booking_guest (booking_id, contact_email, contact_phone) VALUES (19, 'rueoiwt@gmail.com', '6194457645');
-INSERT INTO booking_guest (booking_id, contact_email, contact_phone) VALUES (20, 'otuior@gmail.com', '6194547645');
-INSERT INTO booking_guest (booking_id, contact_email, contact_phone) VALUES (21, 'ksd@gmail.com', '6784457645');
+-- booking_guest
+DROP TABLE IF EXISTS booking_guest;
+CREATE TABLE IF NOT EXISTS booking_guest (
+    `booking_id` INT,
+    `email` VARCHAR(255) CHARACTER SET utf8,
+    `phone` VARCHAR(25) CHARACTER SET utf8
+);
+INSERT INTO booking_guest VALUES
+	(8, 'jlsdj@gmail.com', '6194457645'),
+    (9, 'jdslka@gmai.com', '6194412645'),
+    (10, 'dsdfds@gmail.com', '6194717645'),
+    (11, 'fjsdlkf@gmail.com', '6132457645'),
+    (12, 'tryry@gmail.com', '6197657645'),
+    (18, 'flksdjfkl@gmail.com', '6894457645'),
+    (19, 'rueoiwt@gmail.com', '6194457645'),
+    (20, 'otuior@gmail.com', '6194547645'),
+    (21, 'ksd@gmail.com', '6784457645');
