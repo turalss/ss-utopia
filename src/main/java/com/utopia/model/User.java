@@ -6,12 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
 public class User {
+
 	@Id
 	@Column(name = "id")
 	private int id;
@@ -121,7 +121,7 @@ public class User {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	};
+	}
 	
 	
 	
