@@ -17,6 +17,7 @@ public class AirplaneType {
 	@Column(name = "max_capacity")
 	private Integer maxCapacity;
 
+  public AirplaneType(){}
   public AirplaneType(Integer id, Integer maxCapacity) {
     super();
     this.setId(id);
