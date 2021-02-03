@@ -15,7 +15,7 @@ public interface AirplaneTypeRepository extends CrudRepository<AirplaneType, Int
 	List<AirplaneType> getAllAirplaneTypes();
 	
 	@Query(value="SELECT * FROM airplane_type WHERE id = 1?", nativeQuery=true)
-	List<AirplaneType> getAirplaneTypesWithId(Integer id);
+	AirplaneType getAirplaneTypeWithId(Integer id);
 	
 	@Query(value="SELECT * FROM airplane_type WHERE max_capacity = 1?", nativeQuery=true)
 	List<AirplaneType> getAirplaneTypesWithMaxCapacity(Integer id);

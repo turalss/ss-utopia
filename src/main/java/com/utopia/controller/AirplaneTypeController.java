@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.utopia.model.AirplaneType;
-import com.utopia.service.AirplaneTypeService;
+import com.utopia.service.AirplaneService;
 
 @RestController
 @RequestMapping(value = "/airplanetypes")
 public class AirplaneTypeController {
 	
 	@Autowired
-	AirplaneTypeService airplaneTypeService;
+	AirplaneService airplaneService;
 	
 	@GetMapping("/all")
 	public ResponseEntity<List<AirplaneType>> getAllAirplaneTypes(){
-		List<AirplaneType> airplaneTypeList = airplaneTypeService.getAllAirplaneTypes();
-		if(airplaneTypeList.size() == 0) {
+		List<AirplaneType> airplaneTypeList = airplaneService.getAllAirplaneTypes();
+		if(airplaneTypeList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else return new ResponseEntity<>(airplaneTypeList, HttpStatus.OK);
 	}	
