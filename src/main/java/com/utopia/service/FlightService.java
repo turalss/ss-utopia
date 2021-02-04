@@ -12,10 +12,13 @@ import com.utopia.repository.FlightRepository;
 public class FlightService {
 	
 	@Autowired
+	UtopiaInstanceService utopiaInstanceService;
+
+	@Autowired
 	private FlightRepository flightRepository;
 	
-	public List<Flight> getAllFlights(){
-		return flightRepository.getAllFlights();
+	public List<Flight> findAllFlights() {
+		return flightRepository.findAllFlights();
 	}
 
 }

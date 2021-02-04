@@ -20,8 +20,8 @@ public class FlightController {
 	FlightService flightService;
 	
 	@GetMapping()
-	public ResponseEntity<List<Flight>> getAllFlights(){
-		List<Flight> flightList = flightService.getAllFlights();
+	public ResponseEntity<List<Flight>> findAllFlights(){
+		List<Flight> flightList = flightService.findAllFlights();
 		if(flightList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else return new ResponseEntity<>(flightList, HttpStatus.OK);

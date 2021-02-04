@@ -27,8 +27,8 @@ public class AirportController {
 	
 	
 	@GetMapping
-	public ResponseEntity<List<Airport>> getAll() {
-		List<Airport> list = airportService.getAllAirports();
+	public ResponseEntity<List<Airport>> findAll() {
+		List<Airport> list = airportService.findAllAirports();
 		if (list.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else
@@ -36,7 +36,7 @@ public class AirportController {
 	}
 
 	@GetMapping("/{airportCode}")
-	public ResponseEntity<Airport> getByCode(@PathVariable String airportCode) {
+	public ResponseEntity<Airport> findByCode(@PathVariable String airportCode) {
 		Airport airport = airportService.findAirportByCode(airportCode);
 		if (airport == null) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
@@ -50,7 +50,7 @@ public class AirportController {
 		if (airport == null) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else {
-			airportService.deteleAirport(airport);
+			airportService.deleteAirport(airport);
 			return new ResponseEntity<>(null, HttpStatus.OK);
 		}
 	}

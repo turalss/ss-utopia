@@ -20,8 +20,8 @@ public class PassengerController {
 	PassengerService passengerService;
 	
 	@GetMapping
-	public ResponseEntity<List<Passenger>> getAllPassengers(){
-		List<Passenger> passengerList = passengerService.getAllPassengers();
+	public ResponseEntity<List<Passenger>> findAllPassengers(){
+		List<Passenger> passengerList = passengerService.findAllPassengers();
 		if(passengerList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else return new ResponseEntity<>(passengerList, HttpStatus.OK);

@@ -10,23 +10,25 @@ import com.utopia.repository.BookingRepository;
 
 @Service
 public class BookingService {
-  
+	
+	@Autowired
+	UtopiaInstanceService utopiaInstanceService;
 	@Autowired
 	private BookingRepository bookingRepository;
 
-	public List<Booking> getAllBookings() {
-		return bookingRepository.getAllBookings();
+	public List<Booking> findAllBookings() {
+		return bookingRepository.findAllBookings();
 	}
 	
-	public Booking getBookingWithId(Integer id) {
-		return bookingRepository.getBookingWithId(id);
+	public Booking findBookingById(Integer id) {
+		return bookingRepository.findBookingById(id);
 	}
 	
-	public Booking getBookingWithConfirmationCode(String confirmationCode) {
-		return bookingRepository.getBookingWithConfirmationCode(confirmationCode);
+	public Booking findBookingByConfirmationCode(String confirmationCode) {
+		return bookingRepository.findBookingByConfirmationCode(confirmationCode);
 	}
 
-	public List<Booking> getBookingsWithStatus(String status) {
-		return bookingRepository.getBookingsWithStatus(status);
+	public List<Booking> findBookingsByStatus(String status) {
+		return bookingRepository.findBookingsByStatus(status);
 	}
 }
