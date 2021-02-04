@@ -20,8 +20,8 @@ public class RouteController {
 	RouteService routeService;
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Route>> getAllRoutes(){
-		List<Route> routeList = routeService.getAllRoutes();
+	public ResponseEntity<List<Route>> findAllRoutes(){
+		List<Route> routeList = routeService.findAllRoutes();
 		if(routeList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else return new ResponseEntity<>(routeList, HttpStatus.OK);

@@ -14,23 +14,23 @@ public class RouteService {
 	@Autowired
 	private RouteRepository routeRepository;
 
-	public List<Route> getAllRoutes() {
-		return routeRepository.getAllRoutes();
+	public List<Route> findAllRoutes() {
+		return routeRepository.findAllRoutes();
 	}
 	
-	public Route getRouteWithId(Integer id) {
-		return routeRepository.getRouteWithId(id);
+	public Route findRouteById(Integer id) {
+		return routeRepository.findRouteById(id);
 	}
 	
-	public List<Route> getRoutesWithDestination(Integer id) {
-		return routeRepository.getRoutesWithDestination(id);
+	public List<Route> findRoutesByDestinationIataCode(String code) {
+		return routeRepository.findRoutesByDestinationIataCode(code);
 	}
 
-	public List<Route> getRoutesWithOrigin(Integer id) {
-		return routeRepository.getRoutesWithOrigin(id);
+	public List<Route> findRoutesByOriginIataCode(String code) {
+		return routeRepository.findRoutesByOriginIataCode(code);
 	}
 	
-	public List<Route> getRoutesWithDestinationAndOrigin(Integer destinationId, Integer originId) {
-		return routeRepository.getRoutesWithDestinationAndOrigin(destinationId, originId);
+	public List<Route> findRoutesByDestinationIataCodeAndOriginIataCode(String originCode, String destinationCode) {
+		return routeRepository.findRoutesByDestinationIataCodeAndOriginIataCode(originCode, destinationCode);
 	}
 }
