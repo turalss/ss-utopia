@@ -25,6 +25,6 @@ public class FlightController {
 		if(flightList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else return new ResponseEntity<>(flightList, HttpStatus.OK);
-	}	
+	}
 
 }

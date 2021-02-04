@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Passenger {
 
 	public Passenger() {}
-	public Passenger(int id, Integer bookingId, String firstName, String lastName, Date dateOfBirth, String sex, String address) {
+	public Passenger(int id, int bookingId, String firstName, String lastName, Date dateOfBirth, String sex, String address) {
 		super();
 		this.id = id;
 		this.bookingId = bookingId; 
@@ -22,13 +22,26 @@ public class Passenger {
 		this.sex = sex;
 		this.address = address;
 	}
+	
+
+	public Passenger(int bookingId, String firstName, String lastName, Date dateOfBirth, String sex,
+			String address) {
+		super();
+		this.bookingId = bookingId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
+		this.sex = sex;
+		this.address = address;
+	}
+
 
 	@Id
 	@Column(name = "id")
 	private int id;
 	
 	@Column(name = "booking_id")
-	private Integer bookingId;
+	private int bookingId;
 	
 	@Column(name = "name_first")
 	private String firstName;
@@ -57,7 +70,7 @@ public class Passenger {
 		return bookingId;
 	}
 
-	public void setBooking(Integer bookingId) {
+	public void setBooking(int bookingId) {
 		this.bookingId = bookingId;
 	}
 
