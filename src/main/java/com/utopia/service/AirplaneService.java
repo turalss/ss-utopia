@@ -18,23 +18,23 @@ public class AirplaneService {
 	@Autowired
 	private AirplaneTypeRepository airplaneTypeRepository;
 
-	public List<Airplane> findAllAirplanes() {
-		return airplaneRepository.findAllAirplanes();
+	public List<Airplane> getAllAirplanes() {
+		return airplaneRepository.getAllAirplanes();
 	}
 	
-	public List<Airplane> findAirplaneById(Integer id) {
-		return airplaneRepository.findAirplaneById(id);
+	public Airplane getAirplaneWithId(Integer id) {
+		return airplaneRepository.getAirplaneWithId(id);
 	}
 	
-	public List<Airplane> findAllAirplanesWithTypeId(Integer id) {
-		return airplaneRepository.findAirplanesByTypeId(id);
+	public List<Airplane> getAllAirplanesWithTypeId(Integer id) {
+		return airplaneRepository.getAirplanesWithTypeId(id);
 	}
 
-	public List<AirplaneType> findAllAirplaneTypes() {
-		return airplaneTypeRepository.findAllAirplaneTypes();
+	public List<AirplaneType> getAllAirplaneTypes() {
+		return airplaneTypeRepository.getAllAirplaneTypes();
 	}
 	
-	public AirplaneType findAirplaneTypeById(Integer id) {
-		return airplaneTypeRepository.findAirplaneTypeById(id);
+	public AirplaneType getAirplaneTypeWithId(Integer id) {
+		return airplaneTypeRepository.getAirplaneTypeWithId(id);
 	}
 }

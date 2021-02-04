@@ -12,8 +12,8 @@ public class PassengerService {
 
 	private PassengerRepository passengerRepository;
 	
-	public List<Passenger> findAllPassengers(){
-		return passengerRepository.findAllPassengers();
+	public List<Passenger> getAllPassengers(){
+		return passengerRepository.getAllPassengers();
 	}
 	
 }
