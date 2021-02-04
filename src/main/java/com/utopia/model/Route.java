@@ -1,9 +1,8 @@
 package com.utopia.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,24 +13,23 @@ import javax.persistence.Table;
 public class Route {
 
 	@Id
-	@GeneratedValue
 	@Column(name = "id")
   private Integer id;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "destination_id", referencedColumnName="iata_id")
+  
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "destination", referencedColumnName = "id")
   private Airport destination;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "origin_id", referencedColumnName="iata_id")
+  
+  @ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "origin", referencedColumnName = "id")
 	private Airport origin;
 
   public Route() {}
-	public Route(Integer id, Airport origin, Airport destination) {
+	public Route(Integer id, Airport destination, Airport origin) {
 		super();
 		this.setId(id);
-    this.setOrigin(origin);
     this.setDestination(destination);
+    this.setOrigin(origin);
 	}
 
 	// Id
@@ -59,5 +57,17 @@ public class Route {
 
 	public void setOrigin(Airport airport) {
 		this.origin = airport;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    Route other = (Route) obj;
+    if (id == null) {
+      if (other.getId() != null) return false;
+    } else if (!id.equals(other.getId())) return false;
+    return true;
 	}
 }

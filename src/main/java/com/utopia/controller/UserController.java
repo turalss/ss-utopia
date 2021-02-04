@@ -26,7 +26,7 @@ public class UserController {
 	UserRoleService userRoleService;
 
 	@GetMapping
-	public ResponseEntity<List<User>> findAllUsers() {
+	public ResponseEntity<List<User>> getAllUsers() {
 		List<User> userList = userService.allUsers();
 
 		if (userList.isEmpty()) {

@@ -14,19 +14,19 @@ public class BookingService {
 	@Autowired
 	private BookingRepository bookingRepository;
 
-	public List<Booking> findAllBookings() {
-		return bookingRepository.findAllBookings();
+	public List<Booking> getAllBookings() {
+		return bookingRepository.getAllBookings();
 	}
 	
-	public Booking findBookingById(Integer id) {
-		return bookingRepository.findBookingById(id);
+	public Booking getBookingWithId(Integer id) {
+		return bookingRepository.getBookingWithId(id);
 	}
 	
-	public Booking findBookingByConfirmationCode(String confirmationCode) {
-		return bookingRepository.findBookingByConfirmationCode(confirmationCode);
+	public Booking getBookingWithConfirmationCode(String confirmationCode) {
+		return bookingRepository.getBookingWithConfirmationCode(confirmationCode);
 	}
 
-	public List<Booking> findBookingsByStatus(String status) {
-		return bookingRepository.findBookingsByStatus(status);
+	public List<Booking> getBookingsWithStatus(String status) {
+		return bookingRepository.getBookingsWithStatus(status);
 	}
 }

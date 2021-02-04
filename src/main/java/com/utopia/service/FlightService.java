@@ -14,8 +14,8 @@ public class FlightService {
 	@Autowired
 	private FlightRepository flightRepository;
 	
-	public List<Flight> findAllFlights(){
-		return flightRepository.findAllFlights();
+	public List<Flight> getAllFlights(){
+		return flightRepository.getAllFlights();
 	}
 
 }
