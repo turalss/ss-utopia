@@ -2,6 +2,7 @@ package com.utopia.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
@@ -11,14 +12,15 @@ import javax.persistence.Table;
 public class Booking {
 
 	@Id
+	@GeneratedValue
 	@Column(name = "id")
-  private Integer id;
-
-  @Column(name = "staus")
-  private String status;
-  
+	private Integer id;
+	
 	@JoinColumn(name = "confirmation_code")
   private String confirmationCode;
+
+  @Column(name = "status")
+  private String status;
 
   public Booking() {}
 	public Booking(Integer id, String confirmationCode, String status) {
@@ -53,17 +55,5 @@ public class Booking {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null) return false;
-    if (getClass() != obj.getClass()) return false;
-    Booking other = (Booking) obj;
-    if (id == null) {
-      if (other.getId() != null) return false;
-    } else if (!id.equals(other.getId())) return false;
-    return true;
 	}
 }

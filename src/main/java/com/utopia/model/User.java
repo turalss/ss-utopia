@@ -3,6 +3,7 @@ package com.utopia.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,122 +14,133 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-	@Column(name = "id")
-	private int id;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "role_id")
-	private UserRole userRole;
-	@Column(name = "given_name")
-	private String givenName;
-	@Column(name = "family_name")
-	private String familyName;
-	@Column(name = "username")
-	private String username;
-	@Column(name = "email")
-	private String email;
-	@Column(name = "password")
-	private String password;
-	@Column(name = "phone")
-	private String phone;
-	
-	public User() {}
-	public User(int id, UserRole userRole, String givenName, String familyName, String username, String email,
-			String password, String phone) {
-		super();
-		this.id = id;
-		this.userRole = userRole;
-		this.givenName = givenName;
-		this.familyName = familyName;
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.phone = phone;
-	}
-	
-	public User(String givenName, String familyName, String username, String email,
-			String password, String phone) {
-		super();
-		this.givenName = givenName;
-		this.familyName = familyName;
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.phone = phone;
-	}
+	@GeneratedValue
+  @Column(name = "id")
+  private int id;
 
-	public int getId() {
-		return id;
-	}
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "role_id")
+  private UserRole userRole;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  @Column(name = "given_name")
+  private String givenName;
 
-	public UserRole getUserRole() {
-		return userRole;
-	}
+  @Column(name = "family_name")
+  private String familyName;
 
-	public void setUserRole(UserRole userRole) {
-		this.userRole = userRole;
-	}
+  @Column(name = "username")
+  private String username;
 
-	public String getGivenName() {
-		return givenName;
-	}
+  @Column(name = "email")
+  private String email;
 
-	public void setGivenName(String givenName) {
-		this.givenName = givenName;
-	}
+  @Column(name = "password")
+  private String password;
 
-	public String getFamilyName() {
-		return familyName;
-	}
+  @Column(name = "phone")
+  private String phone;
 
-	public void setFamilyName(String familyName) {
-		this.familyName = familyName;
-	}
+  public User() {}
 
-	public String getUsername() {
-		return username;
-	}
+  public User(
+    int id,
+    UserRole userRole,
+    String givenName,
+    String familyName,
+    String username,
+    String email,
+    String password,
+    String phone
+  ) {
+    super();
+    this.id = id;
+    this.userRole = userRole;
+    this.givenName = givenName;
+    this.familyName = familyName;
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.phone = phone;
+  }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+  public User(
+    String givenName,
+    String familyName,
+    String username,
+    String email,
+    String password,
+    String phone
+  ) {
+    super();
+    this.givenName = givenName;
+    this.familyName = familyName;
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.phone = phone;
+  }
 
-	public String getEmail() {
-		return email;
-	}
+  public int getId() {
+    return id;
+  }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+  public void setId(int id) {
+    this.id = id;
+  }
 
-	public String getPassword() {
-		return password;
-	}
+  public UserRole getUserRole() {
+    return userRole;
+  }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+  public void setUserRole(UserRole userRole) {
+    this.userRole = userRole;
+  }
 
-	public String getPhone() {
-		return phone;
-	}
+  public String getGivenName() {
+    return givenName;
+  }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	
-	
-	
+  public void setGivenName(String givenName) {
+    this.givenName = givenName;
+  }
 
+  public String getFamilyName() {
+    return familyName;
+  }
 
-	
-	
-	
-	
-	
-	
+  public void setFamilyName(String familyName) {
+    this.familyName = familyName;
+  }
 
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public String getPhone() {
+    return phone;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
 }

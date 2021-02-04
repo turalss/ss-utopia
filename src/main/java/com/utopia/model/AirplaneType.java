@@ -2,6 +2,7 @@ package com.utopia.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,7 +12,8 @@ import javax.persistence.Table;
 public class AirplaneType {
 
 	@Id
-	@Column(name = "id")
+  @GeneratedValue
+  @Column(name = "id")
 	private Integer id;
 	
 	@Column(name = "max_capacity")

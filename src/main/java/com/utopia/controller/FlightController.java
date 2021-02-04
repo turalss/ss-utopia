@@ -13,18 +13,17 @@ import com.utopia.model.Flight;
 import com.utopia.service.FlightService;
 
 @RestController
-@RequestMapping(value="/flight")
+@RequestMapping(value="/flights")
 public class FlightController {
 	
 	@Autowired
 	FlightService flightService;
 	
 	@GetMapping("/all")
-	public ResponseEntity<List<Flight>> getAllFlights(){
-		List<Flight> flightList = flightService.getAllFlights();
+	public ResponseEntity<List<Flight>> findAllFlights(){
+		List<Flight> flightList = flightService.findAllFlights();
 		if(flightList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else return new ResponseEntity<>(flightList, HttpStatus.OK);
-	}	
-
+	}
 }

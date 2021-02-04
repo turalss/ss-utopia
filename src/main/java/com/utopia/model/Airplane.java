@@ -3,6 +3,7 @@ package com.utopia.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,11 +14,12 @@ import javax.persistence.Table;
 public class Airplane {
 
 	@Id
+	@GeneratedValue
 	@Column(name = "id")
 	private Integer id;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "airplane_type", referencedColumnName = "id")
+	@JoinColumn(name = "airplane_type_id", referencedColumnName = "id")
 	private AirplaneType airplaneType;
 
 	public Airplane(){}
