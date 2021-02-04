@@ -19,8 +19,8 @@ public class UserService {
 		return userRepository.findUserByRoleId(userRole.getId());
 	};
 	
-	public User findUserByUsername(User user) {
-		return userRepository.findUserByUsername(user.getUsername());
+	public User findUserByEmail(User user) {
+		return userRepository.findUserByUsername(user.getEmail());
 	};
 	
 	public User findUserByEmailAdress(User user) {

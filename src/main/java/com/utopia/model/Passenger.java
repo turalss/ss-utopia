@@ -2,48 +2,54 @@ package com.utopia.model;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "passenger")
 public class Passenger {
 
+	@Id
+	@Column(name = "id")
+	private int id;
+	
+    @ManyToOne	
+	@JoinColumn(name = "booking_id")
+	private Booking bookingId;
+	
+	@Column(name = "first_name")
+	private String firstName;
+	
+	@Column(name = "last_name")
+	private String lastName;
+	
+	@Column(name = "date_of_birth")
+	private Date dateOfBirth;
+	
+	@Column(name = "gender")
+	private String sex;
+	
+	@Column(name = "address")
+	private String address;
+	
 	public Passenger() {}
-	public Passenger(int id, Integer bookingId, String firstName, String lastName, Date dateOfBirth, String sex, String address) {
+
+	public Passenger(int id, Booking bookingId, String firstName, String lastName, Date dateOfBirth, String sex,
+			String address) {
 		super();
 		this.id = id;
-		this.bookingId = bookingId; 
+		this.bookingId = bookingId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.sex = sex;
 		this.address = address;
 	}
-
-	@Id
-	@Column(name = "id")
-	private int id;
-	
-	@Column(name = "booking_id")
-	private Integer bookingId;
-	
-	@Column(name = "name_first")
-	private String firstName;
-	
-	@Column(name = "name_last")
-	private String lastName;
-	
-	@Column(name = "date_of_birth")
-	private Date dateOfBirth;
-	
-	@Column(name = "sex")
-	private String sex;
-	
-	@Column(name = "address")
-	private String address;
 
 	public int getId() {
 		return id;
@@ -53,11 +59,11 @@ public class Passenger {
 		this.id = id;
 	}
 
-	public Integer getBooking() {
+	public Booking getBookingId() {
 		return bookingId;
 	}
 
-	public void setBooking(Integer bookingId) {
+	public void setBookingId(Booking bookingId) {
 		this.bookingId = bookingId;
 	}
 
@@ -99,5 +105,9 @@ public class Passenger {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
+	};
+	
+	
+	
+
 }

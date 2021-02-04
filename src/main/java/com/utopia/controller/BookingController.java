@@ -19,7 +19,7 @@ public class BookingController {
 	@Autowired
 	BookingService bookingService;
 	
-	@GetMapping("/all")
+	@GetMapping
 	public ResponseEntity<List<Booking>> getAllBookings(){
 		List<Booking> bookingList = bookingService.getAllBookings();
 		if(bookingList.isEmpty()) {

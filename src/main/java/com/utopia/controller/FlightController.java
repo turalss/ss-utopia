@@ -19,12 +19,12 @@ public class FlightController {
 	@Autowired
 	FlightService flightService;
 	
-	@GetMapping("/all")
+	@GetMapping()
 	public ResponseEntity<List<Flight>> getAllFlights(){
 		List<Flight> flightList = flightService.getAllFlights();
 		if(flightList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else return new ResponseEntity<>(flightList, HttpStatus.OK);
 	}	
-
+	
 }

@@ -19,12 +19,11 @@ public class PassengerController {
 	@Autowired
 	PassengerService passengerService;
 	
-	@GetMapping("/all")
+	@GetMapping
 	public ResponseEntity<List<Passenger>> getAllPassengers(){
 		List<Passenger> passengerList = passengerService.getAllPassengers();
 		if(passengerList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else return new ResponseEntity<>(passengerList, HttpStatus.OK);
 	}	
-	
 }

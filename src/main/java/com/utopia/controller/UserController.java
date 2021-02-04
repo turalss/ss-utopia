@@ -17,7 +17,7 @@ import com.utopia.service.UserRoleService;
 import com.utopia.service.UserService;
 
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/users")
 public class UserController {
 
 	@Autowired

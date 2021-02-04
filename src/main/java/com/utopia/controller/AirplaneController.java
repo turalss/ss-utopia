@@ -21,7 +21,7 @@ public class AirplaneController {
 	@Autowired
 	AirplaneService airplaneService;
 	
-	@GetMapping("/all")
+	@GetMapping("all")
 	public ResponseEntity<List<Airplane>> getAllAirplanes(){
 		List<Airplane> airplaneList = airplaneService.getAllAirplanes();
 		if(airplaneList.isEmpty()) {

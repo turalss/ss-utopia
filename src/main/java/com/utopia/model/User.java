@@ -1,12 +1,21 @@
 package com.utopia.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "user")
@@ -18,39 +27,33 @@ public class User {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "role_id")
 	private UserRole userRole;
-	@Column(name = "given_name")
-	private String givenName;
-	@Column(name = "family_name")
-	private String familyName;
-	@Column(name = "username")
-	private String username;
+	@Column(name = "first_name")
+	private String firstName;
+	@Column(name = "last_name")
+	private String lastName;
 	@Column(name = "email")
 	private String email;
 	@Column(name = "password")
 	private String password;
 	@Column(name = "phone")
 	private String phone;
+
+	@OneToMany
+	@JoinTable(name = "booking_user", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "booking_id") })
+    private List<Booking> bookings;
 	
-	public User() {}
-	public User(int id, UserRole userRole, String givenName, String familyName, String username, String email,
-			String password, String phone) {
+	
+	public User() {
+	}
+
+	public User(int id, UserRole userRole, String firstName, String lastName, String email, String password,
+			String phone) {
 		super();
 		this.id = id;
 		this.userRole = userRole;
-		this.givenName = givenName;
-		this.familyName = familyName;
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.phone = phone;
-	}
-	
-	public User(String givenName, String familyName, String username, String email,
-			String password, String phone) {
-		super();
-		this.givenName = givenName;
-		this.familyName = familyName;
-		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.phone = phone;
@@ -72,28 +75,20 @@ public class User {
 		this.userRole = userRole;
 	}
 
-	public String getGivenName() {
-		return givenName;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setGivenName(String givenName) {
-		this.givenName = givenName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getFamilyName() {
-		return familyName;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setFamilyName(String familyName) {
-		this.familyName = familyName;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {
@@ -118,17 +113,6 @@ public class User {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-	
-	
-	
-
-
-	
-	
-	
-	
-	
-	
+	};
 
 }

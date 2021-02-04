@@ -1,12 +1,16 @@
 package com.utopia.model;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -14,17 +18,6 @@ import javax.persistence.Table;
 @Table(name = "flight")
 public class Flight {
 	
-	public Flight() {}
-	public Flight(Integer id, Airplane airplane, Route route, Timestamp departureTime, Integer reservedSeats, Float seatPrice) {
-		super();
-		this.id = id;
-		this.airplane = airplane;
-		this.route = route;
-		this.departureTime = departureTime;
-		this.reservedSeats = reservedSeats;
-		this.seatPrice = seatPrice;
-	}
-
 	@Id
 	@Column(name = "id")
 	private int id;
@@ -46,53 +39,100 @@ public class Flight {
 	@Column
 	private float seatPrice;
 	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name = "flight_bookings",
+			joinColumns = @JoinColumn(name = "flight_id"),
+			inverseJoinColumns = @JoinColumn(name = "booking_id"))
+	private List<Booking> guests;
+	
+	
+	public Flight() {}
+
+
+	public Flight(int id, Airplane airplane, Route route, Timestamp departureTime, int reservedSeats, float seatPrice,
+			List<Booking> guests) {
+		super();
+		this.id = id;
+		this.airplane = airplane;
+		this.route = route;
+		this.departureTime = departureTime;
+		this.reservedSeats = reservedSeats;
+		this.seatPrice = seatPrice;
+		this.guests = guests;
+	}
+
+
 	public int getId() {
 		return id;
 	}
+
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Airplane getAirPlane() {
+
+	public Airplane getAirplane() {
 		return airplane;
 	}
 
-	public void setAirPlane(Airplane airplane) {
+
+	public void setAirplane(Airplane airplane) {
 		this.airplane = airplane;
 	}
+
 
 	public Route getRoute() {
 		return route;
 	}
 
+
 	public void setRoute(Route route) {
 		this.route = route;
 	}
+
 
 	public Timestamp getDepartureTime() {
 		return departureTime;
 	}
 
+
 	public void setDepartureTime(Timestamp departureTime) {
 		this.departureTime = departureTime;
 	}
+
 
 	public int getReservedSeats() {
 		return reservedSeats;
 	}
 
+
 	public void setReservedSeats(int reservedSeats) {
 		this.reservedSeats = reservedSeats;
 	}
+
 
 	public float getSeatPrice() {
 		return seatPrice;
 	}
 
+
 	public void setSeatPrice(float seatPrice) {
 		this.seatPrice = seatPrice;
 	}
+
+
+	public List<Booking> getGuests() {
+		return guests;
+	}
+
+
+	public void setGuests(List<Booking> guests) {
+		this.guests = guests;
+	}
+
+	
 
 	
 

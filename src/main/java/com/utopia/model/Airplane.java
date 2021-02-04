@@ -17,7 +17,7 @@ public class Airplane {
 	private Integer id;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "airplane_type", referencedColumnName = "id")
+	@JoinColumn(name = "type_id", referencedColumnName = "id")
 	private AirplaneType airplaneType;
 
 	public Airplane(){}

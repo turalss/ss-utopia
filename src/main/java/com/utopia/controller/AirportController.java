@@ -26,7 +26,7 @@ public class AirportController {
 	AirportService airportService;
 	
 	
-	@GetMapping("/all")
+	@GetMapping
 	public ResponseEntity<List<Airport>> getAll() {
 		List<Airport> list = airportService.getAllAirports();
 		if (list.isEmpty()) {
