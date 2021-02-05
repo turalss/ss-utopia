@@ -73,7 +73,7 @@ public class Flight {
 	}
 
 
-	public Airplane getAirplane() {
+	public Airplane findAirplane() {
 		return airplane;
 	}
 

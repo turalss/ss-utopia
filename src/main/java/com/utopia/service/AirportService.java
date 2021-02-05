@@ -13,9 +13,11 @@ import com.utopia.repository.AirportRepository;
 public class AirportService {
 
 	@Autowired
+	UtopiaInstanceService utopiaInstanceService;
+	@Autowired
 	AirportRepository airportRepository;
 
-	public List<Airport> getAllAirports() {
+	public List<Airport> findAllAirports() {
 		return airportRepository.findAll();
 	}
 
@@ -35,7 +37,7 @@ public class AirportService {
 		}
 	}
 
-	public void deteleAirport(Airport airport) throws AirportNotFoundException {
+	public void deleteAirport(Airport airport) throws AirportNotFoundException {
 		if (airport == null) {
 			throw new AirportNotFoundException("Airport not found");
 		}

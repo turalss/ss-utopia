@@ -13,9 +13,11 @@ import com.utopia.repository.PassengerRepository;
 public class PassengerService {
 
 	@Autowired
+	UtopiaInstanceService utopiaInstanceService;
+	@Autowired
 	private PassengerRepository passengerRepository;
 
-	public List<Passenger> getAllPassengers() {
+	public List<Passenger> findAllPassengers() {
 		return (List<Passenger>) passengerRepository.findAll();
 	}
 

@@ -37,23 +37,11 @@ public class Airplane {
 	}
 
 	// airplaneType
-	public AirplaneType getAirplaneType() {
+	public AirplaneType findAirplaneType() {
 		return airplaneType;
 	}
 
 	public void setAirplaneType(AirplaneType airplaneType) {
 		this.airplaneType = airplaneType;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null) return false;
-    if (getClass() != obj.getClass()) return false;
-    Airplane other = (Airplane) obj;
-    if (id == null) {
-      if (other.getId() != null) return false;
-    } else if (!id.equals(other.getId())) return false;
-    return true;
 	}
 }

@@ -20,8 +20,8 @@ public class BookingController {
 	BookingService bookingService;
 	
 	@GetMapping
-	public ResponseEntity<List<Booking>> getAllBookings(){
-		List<Booking> bookingList = bookingService.getAllBookings();
+	public ResponseEntity<List<Booking>> findAllBookings(){
+		List<Booking> bookingList = bookingService.findAllBookings();
 		if(bookingList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else return new ResponseEntity<>(bookingList, HttpStatus.OK);

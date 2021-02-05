@@ -58,7 +58,7 @@ public class Passenger {
 		this.id = id;
 	}
 
-	public Booking getBookingId() {
+	public Booking findBookingId() {
 		return bookingId;
 	}
 
