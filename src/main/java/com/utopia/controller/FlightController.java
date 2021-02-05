@@ -30,16 +30,16 @@ public class FlightController {
 	}
 	
 	@GetMapping("/{date}")
-	public ResponseEntity<List<Flight>> getFlightsByDate(@PathVariable Date date){
-		List<Flight> flightList = flightService.getFlightsByDate(date);
+	public ResponseEntity<List<Flight>> findFlightsByDate(@PathVariable Date date){
+		List<Flight> flightList = flightService.findFlightsByDate(date);
 		if(flightList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else return new ResponseEntity<>(flightList, HttpStatus.OK);
 	}
 	
 	@GetMapping("/{origin}/{destination}")
-	public ResponseEntity<List<Flight>> getFlightsByOrigDate(@PathVariable String origin, String destination){
-		List<Flight> flightList = flightService.getFlightsByOrigDest(origin, destination);
+	public ResponseEntity<List<Flight>> findFlightsByOrigDate(@PathVariable String origin, @PathVariable String destination){
+		List<Flight> flightList = flightService.findFlightsByOrigDest(origin, destination);
 		if(flightList.isEmpty()) {
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		} else return new ResponseEntity<>(flightList, HttpStatus.OK);

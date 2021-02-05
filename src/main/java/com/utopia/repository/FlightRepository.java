@@ -24,7 +24,7 @@ public interface FlightRepository extends JpaRepository<Flight, Integer>{
 	@Query(value="SELECT * FROM flight WHERE CAST(departure_time AS DATE) = ?1", nativeQuery=true)
 	List<Flight> findFlightsByDate(Date date);
 		
-	@Query(value="SELECT flight.* FROM route, flight WHERE route.origin_id = ?1 AND route.destination_id = ?2 AND flight.route_id = route.id;", nativeQuery=true)
+	@Query(value="SELECT flight.* FROM route, flight WHERE route.origin_id = ?1 AND route.destination_id = ?2 AND flight.route_id = route.id", nativeQuery=true)
 	List<Flight> findFlightsByOrigDest(String origin, String destination);
 
 }

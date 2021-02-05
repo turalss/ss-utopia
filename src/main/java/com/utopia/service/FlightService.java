@@ -20,11 +20,11 @@ public class FlightService {
 		return flightRepository.findAllFlights();
 	}
 	
-	public List<Flight> getFlightsByDate(Date date){
+	public List<Flight> findFlightsByDate(Date date){
 		return flightRepository.findFlightsByDate(date);
 	}
 	
-	public List<Flight> getFlightsByOrigDest(String origin, String destination){
+	public List<Flight> findFlightsByOrigDest(String origin, String destination){
 		return flightRepository.findFlightsByOrigDest(origin, destination);
 	}
 
