@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "utopia.instance.type",
+  "type": "java.lang.String",
+  "description": "Instance configuration type for microservice to run as."
+}]}

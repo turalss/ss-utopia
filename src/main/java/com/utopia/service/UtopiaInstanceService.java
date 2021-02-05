@@ -29,4 +29,10 @@ public class UtopiaInstanceService {
 	public List<UtopiaInstance> findInstancesByType(String type) {
 		return utopiaInstanceRepository.findInstancesByType(type);
 	}
+
+	public UtopiaInstance save(UtopiaInstance instance) {
+		return instance != null 
+		? utopiaInstanceRepository.save(instance)
+		: null;
+	}
 }

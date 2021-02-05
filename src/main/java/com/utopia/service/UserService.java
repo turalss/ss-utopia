@@ -13,8 +13,6 @@ import com.utopia.repository.UserRepository;
 public class UserService {
 	
 	@Autowired
-	UtopiaInstanceService utopiaInstanceService;
-	@Autowired
 	UserRepository userRepository;
 	
 	public List<User> findAllUsersByRoleId(UserRole userRole){

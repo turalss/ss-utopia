@@ -14,8 +14,6 @@ import com.utopia.repository.AirplaneTypeRepository;
 public class AirplaneService {
 	
 	@Autowired
-	UtopiaInstanceService utopiaInstanceService;
-	@Autowired
 	private AirplaneRepository airplaneRepository;
 	@Autowired
 	private AirplaneTypeRepository airplaneTypeRepository;

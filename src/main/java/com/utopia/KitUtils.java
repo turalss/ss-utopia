@@ -8,6 +8,7 @@ public class KitUtils {
   private KitUtils(){}
 
   public static final String ANSI_RESET = "\033[0m";
+  public static final String ANSI_ANNOUNCE = "\033[36;1;4m";
   public static final String ANSI_ERROR = "\033[31;1m";
   public static final String ANSI_WARN = "\033[33;1m";
   public static final String ANSI_SUCCESS = "\033[32;1m";
@@ -34,6 +35,10 @@ public class KitUtils {
 
   public static void log(String message) {
     System.out.println(message);
+  }
+
+  public static void logAnnounce(String message) {
+    System.out.println(ANSI_ANNOUNCE + "[ANNOUNCE] " + message + ANSI_RESET);
   }
 
   public static void logError(String message) {
