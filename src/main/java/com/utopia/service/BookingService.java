@@ -12,8 +12,6 @@ import com.utopia.repository.BookingRepository;
 public class BookingService {
 	
 	@Autowired
-	UtopiaInstanceService utopiaInstanceService;
-	@Autowired
 	private BookingRepository bookingRepository;
 
 	public List<Booking> findAllBookings() {

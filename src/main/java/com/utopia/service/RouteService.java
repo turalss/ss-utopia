@@ -12,8 +12,6 @@ import com.utopia.repository.RouteRepository;
 public class RouteService {
 	
 	@Autowired
-	UtopiaInstanceService utopiaInstanceService;
-	@Autowired
 	private RouteRepository routeRepository;
 
 	public List<Route> findAllRoutes() {

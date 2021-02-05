@@ -15,9 +15,7 @@ import com.utopia.repository.UserRoleRepository;
  */
 @Service
 public class UserRoleService {
-	
-	@Autowired
-	UtopiaInstanceService utopiaInstanceService;
+
 	// adding UserRoleRepository as a dependency 
 	@Autowired
 	private UserRoleRepository userRoleRepository;

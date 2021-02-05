@@ -13,8 +13,6 @@ import com.utopia.repository.AirportRepository;
 public class AirportService {
 
 	@Autowired
-	UtopiaInstanceService utopiaInstanceService;
-	@Autowired
 	AirportRepository airportRepository;
 
 	public List<Airport> findAllAirports() {
