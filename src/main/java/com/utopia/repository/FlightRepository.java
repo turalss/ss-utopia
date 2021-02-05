@@ -1,5 +1,6 @@
 package com.utopia.repository;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -19,5 +20,11 @@ public interface FlightRepository extends JpaRepository<Flight, Integer>{
 	
 	@Query(value="SELECT * FROM flight WHERE route_id = ?1", nativeQuery=true)
 	List<Flight> findFlightsByRouteId(Integer id);
+	
+	@Query(value="SELECT * FROM flight WHERE CAST(departure_time AS DATE) = ?1", nativeQuery=true)
+	List<Flight> findFlightsByDate(Date date);
+		
+	@Query(value="SELECT flight.* FROM route, flight WHERE route.origin_id = ?1 AND route.destination_id = ?2 AND flight.route_id = route.id;", nativeQuery=true)
+	List<Flight> findFlightsByOrigDest(String origin, String destination);
 
 }
