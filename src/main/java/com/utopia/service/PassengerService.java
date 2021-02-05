@@ -25,6 +25,6 @@ public class PassengerService {
 			return Optional.ofNullable(optional.get());
 		}
 
-		return null;
+		return Optional.empty();
 	}
 }
